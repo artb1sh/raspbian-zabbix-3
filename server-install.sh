@@ -1,6 +1,8 @@
 #!/bin/bash
-#this code is tested un fresh 2016-02-09-raspbian-jessie-lite Raspberry Pi image
-#sudo raspi-config -> extend partition -> reboot
+
+#this code is tested and fresh 2017-07-05-raspbian-jessie-lite image
+#this code is tested and NOT WORKS with 2017-08-16-raspbian-stretch-lite image
+
 #sudo su
 #apt-get update -y && apt-get upgrade -y && apt-get install git -y
 #git clone https://github.com/catonrug/raspbian-zabbix-3.git && cd raspbian-zabbix-3 && chmod +x agent-install.sh server-install.sh
@@ -78,7 +80,7 @@ global \$DB;
 ?>
 EOF
 #install additional debugging tools
-apt-get install mtr nmap dstat telnet python-mechanize python-requests -y
+#apt-get install mtr nmap dstat telnet python-mechanize python-requests -y
 
 #reset ip address in config if sd card is moved to another raspberry
 cat > /etc/network/if-up.d/zabbix-server-ip << EOF

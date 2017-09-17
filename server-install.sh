@@ -4,9 +4,7 @@
 #this code is tested and NOT WORKS with 2017-08-16-raspbian-stretch-lite image
 
 #sudo su
-#apt-get update -y && apt-get upgrade -y && apt-get install git -y
-#git clone https://github.com/catonrug/raspbian-zabbix-3.git && cd raspbian-zabbix-3 && chmod +x agent-install.sh server-install.sh
-#./server-install.sh
+#apt-get update -y && apt-get install git -y && cd && git clone https://github.com/catonrug/raspbian-zabbix-3.git && cd raspbian-zabbix-3 && chmod +x agent-install.sh server-install.sh && time ./server-install.sh
 
 apt-get update -y && apt-get upgrade -y
 apt-get install mysql-server -y

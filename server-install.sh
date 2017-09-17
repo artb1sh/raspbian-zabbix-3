@@ -32,12 +32,15 @@ mkdir -p /var/zabbix/externalscripts
 chown -R zabbix:zabbix /var/zabbix/
 tar -vzxf zabbix-*.tar.gz -C ~
 cd ~/zabbix-*/database/mysql
-mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < schema.sql
-mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < images.sql
-mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < data.sql
+echo processing schema.sql
+time mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < schema.sql
+echo processing images.sql
+time mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < images.sql
+echo processing data.sql
+time mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < data.sql
 cd ~/zabbix-*/
 ./configure --enable-server --enable-agent --with-mysql --with-libcurl --with-libxml2 --with-ssh2 --with-net-snmp --with-openipmi --with-jabber
-make install &&
+time make install &&
 cp ~/zabbix-*/misc/init.d/debian/* /etc/init.d/
 update-rc.d zabbix-server defaults
 update-rc.d zabbix-agent defaults

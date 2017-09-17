@@ -21,6 +21,7 @@ apt-get install libsnmp-dev -y
 apt-get install libssh2-1-dev -y
 apt-get install libopenipmi-dev -y
 apt-get install libcurl4-openssl-dev -y
+apt-get install libevent-dev -y #configure: error: Unable to use libevent (libevent check failed)
 /usr/bin/mysqladmin -u root -preverse password 'LCq9LCFCNMZEqatm'
 mysql -h localhost -uroot -pLCq9LCFCNMZEqatm -P 3306 -s <<< 'CREATE DATABASE zabbix CHARACTER SET UTF8'
 mysql -h localhost -uroot -pLCq9LCFCNMZEqatm -P 3306 -s <<< 'GRANT ALL PRIVILEGES on zabbix.* to "zabbix"@"localhost" IDENTIFIED BY "drFJ7xx5MNTbqJ39"'
@@ -38,7 +39,7 @@ mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < images.sql
 mysql -uzabbix -pdrFJ7xx5MNTbqJ39 zabbix < data.sql
 cd ~/zabbix-*/
 ./configure --enable-server --enable-agent --with-mysql --with-libcurl --with-libxml2 --with-ssh2 --with-net-snmp --with-openipmi --with-jabber
-make install
+make install &&
 cp ~/zabbix-*/misc/init.d/debian/* /etc/init.d/
 update-rc.d zabbix-server defaults
 update-rc.d zabbix-agent defaults
